@@ -1,0 +1,82 @@
+
+<div style="display:inline;width:100%">
+{{data}}
+</div>
+<br/>
+
+<div style="display: flex;">
+  <form style="width: 31%;
+  padding: 9px;
+  background: aquamarine;
+  margin-left: 9px;
+  margin-bottom: 30px;" #form="ngForm" (ngSubmit)="submit(form)">
+    <div class="form-group">
+      <label for="courseid">courseid</label>
+      <input type="text"  name="courseid"class="form-control" [(ngModel)]="courseid" id="courseid" aria-describedby="emailHelp" placeholder="Enter nane">
+    </div>
+    <div class="form-group">
+      <label for="category">category</label>
+      <input type="text"name="category" class="form-control" [(ngModel)]="category"  id="category" placeholder="Category">
+    </div>
+    <div class="form-group">
+      <label for="coursename">coursename</label>
+      <input type="text" name="coursename" class="form-control" [(ngModel)]="coursename"  id="coursename" placeholder="Coursename">
+    </div>
+    <div class="form-group">
+      <label for="description">description</label>
+      <input type="text" name="description" class="form-control" [(ngModel)]="description"  id="description" placeholder="Description">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  
+  
+  <div style="height: 332px;
+  overflow-x: auto;
+  width: 93%;
+  margin-left: 36px;">
+    <table class="style" (onCellEditEnter)="editing($event)">
+      <tr>
+        <th>courseid</th>
+        <th>category</th>
+        <th>coursename</th>
+        <th>description</th>
+         <th>Actions</th>
+      </tr>
+      <tr *ngFor="let item of totalListData; let i = index">
+        <!-- <td><input type="text" [(ngModel)]="item.id" /></td>
+        <td><input type="text" [(ngModel)]="item.name" /></td>
+        <td><input type="text" [(ngModel)]="item.quantity" /></td>
+        <td><input type="text" [(ngModel)]="item.price" /></td>
+        <td><input type="text"/></td> -->
+  
+        <td>{{item.courseid}}</td>
+        <td>{{item.category}}</td>
+        <td>{{item.coursename}}</td>
+        <td>{{item.description}}</td>
+  
+        <td>
+          <button (click)="deleteRow(item)" style="width: 38px;"><i class="fa fa-trash"></i> </button> 
+          <button (click)="editRow(item)" style="width: 38px;"> <i class="fa fa-pencil-square-o" aria-hidden="true" ></i>
+          </button>
+          <button (click)="save(i)" *ngIf="isedit" style="width: 38px;"> <i class="fa fa-floppy-o" aria-hidden="true"></i>
+          </button> 
+         
+    
+          
+          
+        </td>
+      </tr>
+      
+    </table>
+  
+  
+  
+  </div>
+  
+</div>
+<app-child></app-child>
+
+
+
+
+
